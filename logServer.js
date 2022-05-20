@@ -26,7 +26,11 @@ connection.on('error',onError);
 			vv=vv.replace("\n","");
 			vv=vv.replace("\r","");
 			console.log(vv);
-			fs.appendFile("logs.txt",vv);			
+			fs.appendFile("logs.txt",vv+"\r\n" ,function(errs){
+				if(errs){
+					console.log(errs);
+				}
+			});			
 		}
 		connection.end(ircs);
 		if (iss>31){
